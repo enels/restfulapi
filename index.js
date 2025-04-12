@@ -11,17 +11,16 @@ const url = require('url');
 const server = http.createServer(function(req, res) {
     
     // get the url and parse it
-    let parsedUrl = url.parse(req.url, true);
+    const parsedUrl = url.parse(req.url, true);
 
     // get the path
-
+    const path = parsedUrl.pathname;
 
     // send the response
-
+    res.end('Hello, World\n');
     
     // log the request path
 
-    res.end('Hello, World\n');
 });
 
 // start the server and have it listen on port 3000
