@@ -29,7 +29,7 @@ const server = http.createServer(function(req, res) {
     res.end('Hello, World\n');
     
     // log the request path
-    console.log(`Request received on path ${trimmedPath}`);
+    console.log(`Request received on path ${trimmedPath} with method ${method} with  these query string parameter ${queryStringObject}`);
 
 });
 
