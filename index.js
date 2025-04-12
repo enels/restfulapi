@@ -18,10 +18,15 @@ const server = http.createServer(function(req, res) {
 
     // trim off any forward slashes from the path name
     const trimmedPath = path.replace(/^\/+|\/+$/g, '');
+
+    // get the query string as an object
+    const queryStringObject = parsedUrl.query;
+
     // send the response
     res.end('Hello, World\n');
     
     // log the request path
+    console.log(`Request received on path ${trimmedPath}`);
 
 });
 
