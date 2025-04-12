@@ -11,6 +11,7 @@ const url = require('url');
 const server = http.createServer(function(req, res) {
     
     // get the url and parse it
+    let parsedUrl = url.parse(req.url, true);
 
     // get the path
 
