@@ -5,7 +5,10 @@
 
 // Dependencies
 const http = require('http');
+const { StringDecoder } = require('string_decoder');
 const url = require('url');
+const stringDecoder = require('string_decoder').StringDecoder;
+
 
 // The server should respond to all request with a string
 const server = http.createServer(function(req, res) {
@@ -28,13 +31,28 @@ const server = http.createServer(function(req, res) {
     // get the headers as an object
     const headers = req.headers;
 
-    // send the response
-    res.end('Hello, World\n');
     
-    // log the request path
-    //console.log(`Request received on path ${trimmedPath} with method ${method} with  these query string parameter`, queryStringObject);
+    // get the payload, if any
+    const decoder = new StringDecoder('utf-8');
 
-    console.log(`Request received with these headers`, JSON.stringify(headers));
+    // buffer to store the string
+    let buffer = '';
+    req.on("data", function(data) {
+        buffer += decoder.write(data);
+    });
+
+    req.on("end", function() {
+        buffer += decoder.end();
+
+        // send the response
+       res.end('Hello, World\n');
+    
+        // log the request path
+        //console.log(`Request received on path ${trimmedPath} with method ${method} with  these query string parameter`, queryStringObject);
+
+        console.log(`Request received with these payloads`, buffer);
+
+    });
 
 });
 
