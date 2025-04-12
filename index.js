@@ -22,6 +22,9 @@ const server = http.createServer(function(req, res) {
     // get the query string as an object
     const queryStringObject = parsedUrl.query;
 
+    // get the http request method
+    const method = req.method.toLowerCase();
+
     // send the response
     res.end('Hello, World\n');
     
