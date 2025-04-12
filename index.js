@@ -16,6 +16,8 @@ const server = http.createServer(function(req, res) {
     // get the path
     const path = parsedUrl.pathname;
 
+    // trim off any forward slashes from the path name
+    const trimmedPath = path.replace(/^\/+|\/+$/g, '');
     // send the response
     res.end('Hello, World\n');
     
