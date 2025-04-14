@@ -15,8 +15,8 @@ const _data = require('./lib/data');
 
 
 // Testing
-_data.read('test', 'newFile',function(error, data) {
-    console.log('This is the error', error, ' and this is the data', data);
+_data.update('test', 'newFile',{'fuzz': 'buzz'}, function(error, data) {
+    console.log('This is the error', error);
 });
 
 // instantiate the http server
