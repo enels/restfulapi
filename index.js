@@ -15,9 +15,10 @@ const _data = require('./lib/data');
 
 
 // Testing
-_data.create('test', 'newFile', {'foo'},function(error) {
-    console.log('This is the error', error);
+_data.read('test', 'newFile',function(error, data) {
+    console.log('This is the error', error, ' and this is the data', data);
 });
+
 // instantiate the http server
 const httpServer = http.createServer(function(req, res) {
     
