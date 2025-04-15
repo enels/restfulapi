@@ -11,6 +11,7 @@ const url = require('url');
 const stringDecoder = require('string_decoder').StringDecoder;
 const config = require('./config');
 const fs = require('fs');
+const handlers = require('./lib/handlers');
 
 
 // instantiate the http server
@@ -117,21 +118,6 @@ let unifiedServer = function(req, res) {
 
 }
 
-// define the handlers
-let handlers = {};
-
-// sample handler
-handlers.ping = function (data, callback) {
-
-    callback(200);
-};
-
-// not found handler
-handlers.notFound = function (data, callback) {
-
-    callback(404);
-};
-
 const router = {
     'ping': handlers.ping
-}
+};
